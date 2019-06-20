@@ -1,0 +1,76 @@
+.imgleftpanel {
+
+  margin-left: 5px;
+  margin-top: -10px;
+}
+
+#customerSearchBox {
+  width: auto;
+  float: none;
+  min-height: auto;
+}
+
+#customerSearchBox {
+  width: 400px;
+  float: left;
+  min-height: auto;
+}
+
+.contentBox {
+  border: #1976d2 solid 1px;
+  border-radius: 5px;
+  background-color: white;
+  min-height: 190px;
+  width: 280px;
+
+}
+
+section.contentBox label {
+  padding: 10px;
+  display: block;
+  background-color: #1976d2;
+  color: white;
+}
+
+section.contentBox article {
+  padding: 15px;
+}/* You can add global styles to this file, and also import other style files */
+
+
+.content-box-2 {
+  background-color: #cfd8dc;
+  padding: 40px;
+}
+
+#total-text {
+  color: #ef5350;
+  font-size: 50px;
+}
+
+section.content-box-2 label {
+  font-weight: bold;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+section.content-box-2 label:nth-child(4) {
+  margin-left: 0;
+}
+
+#order-last-buttons {
+  text-align: right;
+  margin-top: 20px;
+}
+
+section#leftPanel nav ul a li:hover {
+  background-color: #4F97A3;
+  color: whitesmoke;
+}
+
+#drop {
+  background-color: #4e555b;
+}
+
+#drop .dropdown-item:hover {
+  background-color: #0069d9;
+}

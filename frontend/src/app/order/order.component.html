@@ -1,0 +1,225 @@
+<div id="od" class="content-wrapper">
+  <!--&lt;!&ndash; Content Header (Page header) &ndash;&gt;-->
+  <section class="content-header" style="margin-top: -20px">
+    <h1>
+      Orders
+      <small>POS System 2.0</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+      <li class="active">Orders</li>
+    </ol>
+  </section>
+
+  <div class="container-fluid" style="background-color: white;margin-top: 15px">
+    <div class="row" style="margin-top: 15px">
+      <div class="col-sm-6">
+        <div class="card, panel panel-default">
+          <div class="panel-heading bg-blue">servlet.Customer Details</div>
+          <div class="panel-body">
+            <form>
+
+              <label class="lbl">servlet.Customer</label>
+
+              <!--<select class="styleSelect">-->
+              <!--<option>Name</option>-->
+              <!--<option>Item ID</option>-->
+              <!--</select>-->
+              <select name="item" id="sele" class="form-control col-sm-3">
+              </select>
+
+              <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+              <button type="button" id="newCusB" class="btn btn-success">Add new
+                servlet.Customer</button>
+
+
+              <div class="form-group">
+                <label class="lbl">Address</label>
+                <input id="addr" type="text" class="form-control" aria-describedby="emailHelp">
+              </div>
+
+              <div class="form-group">
+                <label class="lbl">Telephone</label>
+                <input id="tel" type="text" class="form-control" aria-describedby="emailHelp">
+              </div>
+
+              <div class="form-group">
+                <label class="lbl">CreditLimit</label>
+                <input id="cref" type="text" class="form-control" aria-describedby="emailHelp">
+              </div>
+
+            </form>
+            <!--<h5 class="card-title">Special title treatment</h5>-->
+            <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card, panel panel-default">
+          <div class="panel-heading bg-blue">Item Select</div>
+          <div class="panel-body">
+            <form>
+
+              <label class="lbl">Item</label>
+              <!--<select class="styleSelect" style="width: 100%">-->
+              <!--<option>Lifebouy Soap</option>>-->
+              <!--<option>Maggie Deviled Chicken Noodles</option>>-->
+              <!--<option>Coca-Cola</option>>-->
+              <!--</select>-->
+              <select id="itsl" name="item" class="form-control">
+              </select>
+
+              <div class="form-group">
+                <label class="lbl">Price</label>
+                <input id="pru" type="text" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label class="lbl">QTY</label>
+                <input id="qun" type="text" class="form-control">
+              </div>
+
+              <hr>
+              <label id="lbl">Order Item</label>
+              <hr>
+
+              <div class="form-group">
+                <label class="lbl">Order QTY</label>
+                <input id="oqun" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <button onclick="addOrd()" id="addO" type="button" class="btn btn-danger al">Add Order
+                </button>
+              </div>
+
+            </form>
+            <!--<h5 class="card-title">Special title treatment</h5>-->
+            <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card, panel panel-default">
+          <div class="panel-heading bg-blue">Invoice Details</div>
+          <div class="panel-body">
+            <form>
+
+              <!--<div class="form-group" >-->
+              <!--<label class="lbl">servlet.Customer</label>-->
+              <!--<input type="email" class="form-control" aria-describedby="emailHelp" >-->
+              <!--</div>-->
+
+              <div class="form-group">
+                <label class="lbl">Date</label>
+                <input type="date" class="form-control styleDate">
+              </div>
+
+              <div class="form-group">
+                <label class="lbl">Order ID</label>
+                <input type="text" id="oids" class="form-control" aria-describedby="emailHelp"
+                       placeholder="O001">
+              </div>
+            </form>
+            <!--<h5 class="card-title">Special title treatment</h5>-->
+            <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+
+            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+
+      <table class="table table-bordered" id="tab5">
+        <thead class="bg-blue">
+        <tr>
+          <th>Item Name</th>
+          <th>Item Price</th>
+          <th>Item Quantity</th>
+          <th class="tot">Tot</th>
+        </tr>
+        </thead>
+        <tbody id="tbo1">
+
+        </tbody>
+      </table>
+      <br>
+    </div>
+  </div>
+  <section class="content-box-2">
+    <h2 id="tt">Total : <span id="totalP">00.0</span><span class="rs">Rs//=</span></h2>
+    <br><br>
+    <label>Cash</label>
+    <input id="inputC" type="text" class=" styleTextInput" style="width: 300px;">
+    <label>Balance</label>
+    <input id="balanceD" type="text" class=" styleTextInput" style="width: 300px;">
+    <label>Discount</label>
+    <input id="discc" type="text" class=" styleTextInput" style="width: 300px;">
+  </section>
+  <br>
+  <br>
+  <section id="order-last-buttons" style="margin-top: -20px">
+    <button type="button" class="btn btn-primary" onclick="fulltc()">Clear</button>
+    <button type="button" class="btn btn-secondary" id="mainB2" style="float: right">Renew Order</button>
+    <button type="button" class="btn btn-success" id="mainB">Submit Order</button>
+  </section>
+
+
+  <!-- Main content -->
+
+  </section>
+  <div class="modal fade" id="orderC" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content" id="mode">
+        <div class="modal-header bg-primary">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title ">New servlet.Customer</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group ">
+            <label>Name :</label>
+            <input type="text" class="form-control">
+            <label>Age :</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group form-inline ">
+            <label>Tp :</label>
+            <input type="text" class="form-control">
+            <label>Salary :</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--table Item Delete-->
+  <div class="modal fade" id="tabI" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content b">
+        <div class="modal-header bg-danger dc">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Confirm</h4>
+        </div>
+        <div class="modal-body">
+          <p>Do You Want To Delete This Item..?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="tid" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/.content -->
+</div>
+

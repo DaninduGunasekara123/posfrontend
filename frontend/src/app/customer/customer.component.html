@@ -1,0 +1,205 @@
+<div id="customer" class="content-wrapper">
+  <!--&lt;!&ndash; Content Header (Page header) &ndash;&gt;-->
+  <section class="content-header">
+    <h1>
+      Customers
+      <small>POS System 2.0</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+      <li class="active">Customers</li>
+    </ol>
+  </section>
+
+  <!--&lt;!&ndash; Main content &ndash;&gt;-->
+  <!--<section class="content">-->
+  <!--&lt;!&ndash; Info boxes &ndash;&gt;-->
+
+  <div class="info-box" style="margin-top: 20px">
+
+    <div class="jumbotron bg-light"
+         style="width: 100%; height: 0px; background-color:white; margin-left:4%;height: 20px">
+
+      <!--<button class="btn btn-success "style="margin-top:-30px">New servlet.Customer</button>-->
+      <button type="button" class="btn btn-success" style="margin-top: -30px" data-toggle="modal"
+              data-target="#myModal">New
+        servlet.Customer
+      </button>
+
+      <button type="button" onclick="viewAllCus()" class="btn btn-warning " style="margin-top: -30px">View All
+        Customers
+      </button>
+    </div>
+
+
+    < class="container-fluid">
+
+    <div class="panel panel-default col-md-4 " style="margin-top: -30px">
+      <div class="panel-heading bg-blue">servlet.Customer Searching</div>
+      <div class="panel-body " style="height: 120px">
+        <input placeholder="NIC/Tp/Name" class="form-control" id="searchtxt">
+        <div class="panel-body" style="margin-top: 10px">
+          <button type="button" onclick="cusSearching()" class="btn btn-primary">Search</button>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="jumbotron bg-light col-md-8"
+         style="width: 100%; height: 0px; background-color:white; margin-left: -15px">
+      <button id="delcus" type="button" class="btn btn-success" style="margin-top: -30px">Delete</button>
+      <button id="editcus" type="button" class="btn btn-danger" style="margin-top: -30px">Edit</button>
+      <button id="cusD" type="button" class="btn btn-info" style="margin-top: -30px">Details</button>
+      <button type="button" class="btn btn-warning" style="margin-top: -30px" onclick="clearField();">
+        Clear
+      </button>
+
+
+    </div>
+    <!--Search Result-->
+
+    <div id="cusSearR" class="panel panel-success col-md-6" style="display: none">
+      <div class="panel-heading">
+        <h5 class="panel-title">Search Resaults</h5>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="form-control">Name :<span id="cname1">Danindu Gunasrkara</span></label>
+          <label class="form-control">Age :<span id="cage1">22</span></label>
+          <label class="form-control">Tp :<span id="cutp1">0719747315</span></label>
+          <label class="form-control">Salary :<span id="csalary1">100 000</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!--servlet.Customer Edit-->
+    <div class="modal fade" id="cusEdit" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title ">servlet.Customer Edit</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Name :<span id="cname">Danindu Gunasekara</span></label>
+              <input id="custName" type="text" class="form-control" placeholder="Name :-" [ngModel]="selectedCustomer.name" minlength="2" required pattern="\w{4}.+">
+
+              <label>Age :<span id="cage">20</span></label>
+              <input id="custAge" type="text" class="form-control" placeholder="Age :-" [ngModel]="selectedCustomer.age" minlength="2" required pattern="\w{2}.+">
+
+              <label>Tp :<span id="cutp">0719747315</span></label>
+              <input id="custTp" type="text" class="form-control" placeholder="Tp No :-" [ngModel]="selectedCustomer.tp" minlength="2" required pattern="\w{10}.+">
+
+              <label>Salary :<span id="csalary">1000 000</span></label>
+              <input id="custSalary" type="text" class="form-control" placeholder="Salary :-" [ngModel]="selectedCustomer.salary" minlength="2" required pattern="\w{10}.+">
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="cusUpdate">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </section>
+
+
+    <table class="table" id="tab1">
+      <thead class="bg-blue">
+      <tr>
+        <!--<th scope="col">#</th>-->
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Tp</th>
+        <th scope="col">Salary</th>
+      </tr>
+      </thead>
+      <tbody id="tbo">
+      <tr *ngFor="let customer of customerlist" (click)="selectedCustomer=customer">
+        <td>{{customer.name}}</td>
+        <td>{{customer.age}}</td>
+        <td>{{customer.tp}}</td>
+        <td>{{customer.salary}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    </form>
+  </div>
+  <!--&lt;!&ndash; /.info-box &ndash;&gt;-->
+</div>
+
+</section>
+<!--/.content -->
+</div>
+
+
+<!--New servlet.Customer Adding-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" id="mode">
+      <div class="modal-header bg-primary">
+
+        <h4 class="modal-title " style="color: white"><b>New servlet.Customer</b></h4>
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group ">
+          <!--<label for="name">Name :</label>-->
+          <label>Name</label>
+
+          <input id="cusNameTxt" type="text" class="form-control" placeholder="Name :-" [ngModel]="selectedCustomer.name" minlength="2" required pattern="\w{4}.+">
+
+          <!--<label for="name">Age :</label>-->
+          <label>Age</label>
+          <input id="cusAgeTxt" type="text" class="form-control" placeholder="Name :-" [ngModel]="selectedCustomer.age" minlength="2" required pattern="\w{2}.+">
+
+        </div>
+        <div class="form-group ">
+          <!--<label for="name">Tp :</label>-->
+          <label>Telephone Number</label>
+          <input id="cusTptxt" type="text" class="form-control" placeholder="Name :-" [ngModel]="selectedCustomer.tp" minlength="2" required pattern="\w{10}.+">
+          <!--<label for="name">Salary :</label>-->
+
+          <label>Salary</label>
+          <input id="cusSalTxt" type="text" class="form-control" placeholder="Name :-" [ngModel]="selectedCustomer.salary" minlength="2" required pattern="\w{10}.+">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="customerAdd()" class="btn btn-success"><b>Save</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--servlet.Customer Delete Model-->
+<div class="modal fade" id="cusDelete" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content b">
+      <div class="modal-header bg-danger dc">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do You Want To Delete This servlet.Customer..?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="crd" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,200 @@
+<div id="Item" class="content-wrapper">
+  <!--&lt;!&ndash; Content Header (Page header) &ndash;&gt;-->
+  <section class="content-header">
+    <h1>
+      Items
+      <small>POS System 2.0</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+      <li class="active">Items</li>
+    </ol>
+  </section>
+
+  <!--&lt;!&ndash; Main content &ndash;&gt;-->
+  <!--<section class="content">-->
+  <!--&lt;!&ndash; Info boxes &ndash;&gt;-->
+
+  <div class="info-box" style="margin-top: 20px">
+
+    <div class="jumbotron bg-light "
+         style="width: 100%; height: 0px; background-color:white; margin-left:4%;height: 20px">
+      <!--<button class="btn btn-success "style="margin-top:-30px">New Item</button>-->
+      <button type="button" class="btn btn-success" style="margin-top: -30px" data-toggle="modal"
+              data-target="#IModel">New Item
+      </button>
+
+
+      <button type="button" onclick="viewAllIte()" class="btn btn-warning " style="margin-top: -30px">View All
+        Items
+      </button>
+    </div>
+
+
+    <form class="container-fluid">
+
+      <div class="panel panel-default col-md-4" style="margin-top: -30px">
+        <div class="panel-heading bg-blue">Items Searching</div>
+        <div class="panel-body " style="height: 120px">
+          <input type="text" placeholder="NIC/Tp/Name" class="form-control" id="searchtxtitem">
+          <div class="panel-body" style="margin-top: 10px">
+            <button type="button" onclick="itemSearching()" class="btn btn-primary">Search</button>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="jumbotron bg-light col-md-8"
+           style="width: 100%; height: 0px; background-color:white; margin-left: -15px">
+        <button type="button" id="deleteitem" class="btn btn-success" style="margin-top: -30px">Delete</button>
+        <button type="button" id="edititem" class="btn btn-danger" style="margin-top: -30px">Edit</button>
+        <button type="button" data-toggle="modal" data-target="#iteDe" class="btn btn-info"
+                style="margin-top: -30px">Details
+        </button>
+        <button type="button" class="btn btn-warning" style="margin-top: -30px" onclick="iteSection()">Clear
+        </button>
+
+
+      </div>
+      <!--Search Resalt-->
+
+      <div id="iteSearR" class="panel panel-success col-md-6" style="display: none">
+        <div class="panel-heading">
+          <h5 class="panel-title">Search Results</h5>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="form-control">Name :<span id="itemN">Lux Soap</span></label>
+            <label class="form-control">Price :<span id="itemPri">50</span></label>
+            <label class="form-control">Quentity :<span id="itemQt">200</span></label>
+          </div>
+        </div>
+      </div>
+
+
+      <table class="table" id="tab2">
+        <thead class="bg-blue">
+        <tr>
+          <!--<th scope="col">#</th>-->
+          <th scope="col">Item Name</th>
+          <th scope="col">Item Price</th>
+          <th scope="col">Item Quantity</th>
+
+        </tr>
+        </thead>
+        <tbody id="tbo2">
+        <tr *ngFor="let item of item" (click)="selectedItem=customer">
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.qty}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      </section>
+
+    </form>
+
+  </div>
+  <!--&lt;!&ndash; /.info-box &ndash;&gt;-->
+</div>
+
+</section>
+<!--/.content -->
+</div>
+
+<!--New Item Adding-->
+
+<div class="modal fade" id="IModel" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" id="mode">
+      <div class="modal-header bg-primary">
+
+        <h4 class="modal-title " style="color: white"><b>New Item</b></h4>
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group ">
+          <!--<label for="name">Name :</label>-->
+          <label>Name</label>
+
+          <input id="itemNametxt" type="text" class="form-control">
+
+          <!--<label for="name">Age :</label>-->
+          <label>Price</label>
+          <input id="itemPricetxt" type="text" class="form-control">
+
+        </div>
+        <div class="form-group ">
+          <!--<label for="name">Tp :</label>-->
+          <label>Quantity</label>
+          <input id="itemQtytxt" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" onclick="customerAdd()" class="btn btn-success" id="btnsavecustomer"><b>Save</b>-->
+
+        <button type="button" class="btn btn-success" onclick="itemAdd()" id="itemSave"><b>Save</b></button>
+
+        <!--<button type="button" id="btnsavecustomer" class="btn btn-primary" style="margin-top: 20px">Save servlet.Customer</button>-->
+
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--Item Delete-->
+<div class="modal fade" id="itemDelete" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content b">
+      <div class="modal-header bg-danger dc">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Do You Want To Delete This Item..?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="ird" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Item Edit-->
+<div class="modal fade" id="itemEdit" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Item content-->
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title ">Item Edit</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+
+          <label>Name :<span id="itemNa"> Item Name</span></label>
+          <input id="itemName" type="text" class="form-control" placeholder="Name :-" [ngModel]="selectedItem.name" minlength="2" required pattern="\w{4}.+">
+
+          <label>Price :<span id="itemPr">Price</span></label>
+          <input id="itemPrice" type="text" class="form-control" placeholder="Name :-" [ngModel]="selectedItem.price" minlength="2" required pattern="\w{4}.+">
+
+          <label>Quentity :<span id="itemQty">Qty</span></label>
+          <input id="itemQun" type="text" class="form-control" placeholder="Name :-" [ngModel]="selectedItem.qty" minlength="2" required pattern="\w{4}.+">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="updateitem" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
